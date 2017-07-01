@@ -82,8 +82,6 @@ class DeadEndWest(place.Place):
 
 class TradePoint(place.Place):
     def _set_values(self):
-        self.x = 0
-        self.y = 0
         self.delta = {}
         self.prerequisites = {}
         self.actions = [TradeMoneyForSatiation()]

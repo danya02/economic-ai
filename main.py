@@ -16,7 +16,17 @@ people[0].money_coefficient = lambda x: x*2
 
 a = places.TradePoint()
 
+global place_map
 place_map = [[a]]
+
+def parse_positions():
+    global place_map
+    for i, y in zip(place_map, range(len(place_map))):
+        for j, x in zip(i, range(len(i))):
+            place_map[x][y].x = x
+            place_map[x][y].y = y
+
+parse_positions()
 
 def do_one_epoch():
     global epoch
