@@ -14,10 +14,23 @@ people = [person.Person()]
 people[0].money = 100
 people[0].money_coefficient = lambda x: x*2
 
+o = places.Empty()
+n = places.WallNorth()
+e = places.WallEast()
+s = places.WallSouth()
+w = places.WallWest()
+q = places.WallNorthWest()
+z = places.WallSouthWest()
+p = places.WallNorthEast()
+m = places.WallSouthEast()
 a = places.TradePoint()
 
 global place_map
-place_map = [[a]]
+place_map = [
+[q, n, n, p],
+[w, a, o, e],
+[w, o, a, e],
+[z, s, s, m]]
 
 def parse_positions():
     global place_map
