@@ -70,8 +70,14 @@ class Person:
         max_act = None
         for i in place.actions:
             sat = 0
-            sat += self.money_coefficient(self.money + i.delta["money"])
-            sat += self.satiation_coefficient(self.satiation + i.delta["satiation"])
+            try:
+                sat += self.money_coefficient(self.money + i.delta["money"])
+            except:
+                sat += self.money_coefficient(self.money)
+            try:
+                sat += self.satiation_coefficient(self.satiation + i.delta["satiation"])
+            except:
+                sat += self.satiation_coefficient(self.satiation)
             if sat > max_sat:
                 max_sat = sat
                 max_act = i
