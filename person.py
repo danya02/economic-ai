@@ -69,7 +69,13 @@ class Person:
         max_sat = 0
         max_act = None
         for i in place.actions:
+            flag = False
             sat = 0
+            for j in i.prerequisites:
+                if self.__getattribute__(j) < i.prerequisites[j]:
+                    flag = True
+            if flag:
+                continue
             try:
                 sat += self.money_coefficient(self.money + i.delta["money"])
             except:
