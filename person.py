@@ -5,6 +5,7 @@ import random
 class Person:
     def __init__(self, parents=None, real_biology=True):
         if parents is None:
+            self.stats = {"strength": 0, "dexterity": 0, "constitution": 0, "intelligence": 0, "wisdom": 0, "charisma": 0}
             # TODO: Make name generation.
             self.name = ""
             # TODO: Make surname generation.
@@ -12,6 +13,12 @@ class Person:
             self.sex = random.choice([0, 1])
             self.x = 0
             self.y = 0
+            for i in self.stats: # algorithm for generating attributes as used in D&D 5E
+                d1 = random.randint(1, 6)
+                d2 = random.randint(1, 6)
+                d3 = random.randint(1, 6)
+                d4 = random.randint(1, 6)
+                self.stats[i] = sum([d1, d2, d3, d4]) - min(d1, d2, d3, d4)
         else:
             if not isinstance(parents, list):
                 raise TypeError("Parents must be a list")
