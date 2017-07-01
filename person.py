@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+import logging
 import actions
 import random
 
@@ -45,6 +46,10 @@ class Person:
         self.satiation_coefficient = lambda x: x
         self.exhaustion = 0
         self.exhaustion_coefficient = lambda x: -x
+        logging.info("A character named %s %s was created at point (%s,%s).", self.name, self.surname, str(self.x), str(self.y))
+        logging.info("Attributes:")
+        for i in self.stats:
+            logging.info("%s: %s", i.capitalize(), str(self.stats[i]))
 
     def act(self):
         if self.target is not None:

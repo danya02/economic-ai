@@ -1,7 +1,10 @@
 #!/usr/bin/python3
+import logging
 import random
 import places
 import person
+
+logging.basicConfig(format='%(levelname)s:%(message)s', level=logging.DEBUG)
 
 is_biology_realistic = True # controls checks at creation of person
 
