@@ -44,7 +44,7 @@ class Person:
         self.satiation = 0
         self.satiation_coefficient = lambda x: x
         self.exhaustion = 0
-        self.exhaustion_coefficient = lambda x: x
+        self.exhaustion_coefficient = lambda x: -x
 
     def act(self):
         if self.target is not None:
