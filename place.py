@@ -5,6 +5,6 @@ class Place:
         self.delta = {}
         self.prerequisites = {}
         self.actions = []
-        _set_values()
+        self._set_values()
     def _set_values(self):
         pass

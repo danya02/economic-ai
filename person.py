@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 import actions
+import random
 
 class Person:
     def __init__(self, parents=None, real_biology=True):
@@ -8,7 +9,7 @@ class Person:
             self.name = ""
             # TODO: Make surname generation.
             self.surname = ""
-            self.sex = random.choose([female, male])
+            self.sex = random.choice([0, 1])
             self.x = 0
             self.y = 0
         else:
@@ -49,7 +50,7 @@ class Person:
             elif self.target[1] < self.y:
                 actions.MoveEast(self)
             else:
-                target[2](self)
+                self.target[2](self)
 
     def compute_satisfaction(self):
         self.satisfaction = 0

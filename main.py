@@ -1,37 +1,32 @@
 #!/usr/bin/python3
 import random
 import places
+import person
 
 is_biology_realistic = True # controls checks at creation of person
 
 female = 0
 male = 1
 
+global epoch
 epoch = 0
-people = []
+people = [person.Person()]
+people[0].money = 100
+people[0].money_coefficient = lambda x: x*2
 
-o = places.Empty()
-n = places.WallNorth()
-e = places.WallEast()
-s = places.WallSouth()
-w = places.WallWest()
-q = places.WallNorthWest()
-z = places.WallSouthWest()
-p = places.WallNorthEast()
-m = places.WallSouthEast()
+a = places.TradePoint()
 
-place_map = [
-[q, n, n, n, n, n, n, p],
-[w, o, o, o, o, o, o, e],
-[w, o, o, o, o, o, o, e],
-[w, o, o, o, o, o, o, e],
-[w, o, o, o, o, o, o, e],
-[w, o, o, o, o, o, o, e],
-[w, o, o, o, o, o, o, e],
-[z, s, s, s, s, s, s, m]]
+place_map = [[a]]
 
 def do_one_epoch():
+    global epoch
     epoch += 1
     for i in people:
         i.select_target(place_map)
         i.act()
+        i.compute_satisfaction()
+    print("epoch:", epoch, " money:", people[0].money, " satiation:", people[0].satiation, " satisfaction:", people[0].satisfaction)
+    input()
+
+while 1:
+    do_one_epoch()
