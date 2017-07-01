@@ -84,6 +84,10 @@ class Person:
                 sat += self.satiation_coefficient(self.satiation + i.delta["satiation"])
             except:
                 sat += self.satiation_coefficient(self.satiation)
+            try:
+                sat += self.exhaustion_coefficient(self.exhaustion + i.delta["exhaustion"])
+            except:
+                sat += self.exhaustion_coefficient(self.exhaustion)
             if sat > max_sat:
                 max_sat = sat
                 max_act = i
