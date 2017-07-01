@@ -25,3 +25,8 @@ class TradeMoneyForSatiation(action.Action):
     def __init__(self):
         self.delta = {"money": -1, "satiation": 1}
         self.prerequisites = {"money": 1}
+
+class Pass(action.Action):
+    def __init__(self):
+        self.delta = {}
+        self.prerequisites = {}
