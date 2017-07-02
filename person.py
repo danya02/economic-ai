@@ -2,16 +2,15 @@
 import logging
 import actions
 import random
+import names
 
 class Person:
     def __init__(self, parents=None, real_biology=True):
         if parents is None:
             self.stats = {"strength": 0, "dexterity": 0, "constitution": 0, "intelligence": 0, "wisdom": 0, "charisma": 0}
-            # TODO: Make name generation.
-            self.name = ""
-            # TODO: Make surname generation.
-            self.surname = ""
-            self.sex = random.choice([0, 1])
+            self.sex = random.randint(0, 1)
+            self.name = names.generate_one_name(self.sex)
+            self.surname = names.generate_one_surname()
             self.x = 0
             self.y = 0
             for i in self.stats: # algorithm for generating attributes as used in D&D 5E
