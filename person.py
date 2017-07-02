@@ -3,6 +3,7 @@ import logging
 import actions
 import random
 import names
+import place_map
 
 class Person:
     def __init__(self, parents=None, real_biology=True):
@@ -61,14 +62,15 @@ class Person:
         self.die("object destroyed by context manager")
 
     def act(self):
+        self.select_target()
         if self.target is not None:
-            if self.target[0] > self.x:
+            if self.target[0] < self.x:
                 actions.MoveNorth()(self)
-            elif self.target[0] < self.x:
+            elif self.target[0] > self.x:
                 actions.MoveSouth()(self)
-            elif self.target[1] > self.y:
-                actions.MoveWest()(self)
             elif self.target[1] < self.y:
+                actions.MoveWest()(self)
+            elif self.target[1] > self.y:
                 actions.MoveEast()(self)
             else:
                 self.target[2](self)
@@ -107,12 +109,12 @@ class Person:
                 max_act = i
         return max_sat, max_act
 
-    def select_target(self, place_map):
+    def select_target(self):
         max_sat = 0
         max_sat_x = None
         max_sat_y = None
-        for i, y in zip(place_map, range(len(place_map))):
-            for j, x in zip(i, range(len(place_map))):
+        for i, y in zip(place_map.map, range(len(place_map.map))):
+            for j, x in zip(i, range(len(i))):
                 a, b = self.compute_satisfaction_for_place(j)
                 a -=self.exhaustion_coefficient(abs(self.x - j.x))
                 a -= self.exhaustion_coefficient(abs(self.y - j.y))
