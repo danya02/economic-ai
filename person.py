@@ -50,6 +50,16 @@ class Person:
         for i in self.stats:
             logging.info("%s: %s", i.capitalize(), str(self.stats[i]))
 
+    def die(self, cause):
+        logging.info("A character named %s %s died while at point (%s, %s). Cause of death: %s.", self.name, self.surname, str(self.x), str(self.y), cause)
+        logging.info("Final attributes:")
+        self.compute_satisfaction()
+        for i in ["money", "satiation", "exhaustion", "satisfaction"]:
+            logging.info("%s: %s", i.capitalize(), str(self.__getattribute__(i)))
+
+    def __exit__(self):
+        self.die("object destroyed by context manager")
+
     def act(self):
         if self.target is not None:
             if self.target[0] > self.x:

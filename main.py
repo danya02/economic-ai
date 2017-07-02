@@ -55,5 +55,9 @@ def do_one_epoch():
     print("epoch:", epoch, " money:", people[0].money, " satiation:", people[0].satiation, " satisfaction:", people[0].satisfaction)
     input()
 
-while 1:
-    do_one_epoch()
+try:
+    while 1:
+        do_one_epoch()
+except KeyboardInterrupt:
+    for i in people:
+        i.die("simulator closed")
