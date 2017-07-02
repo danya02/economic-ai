@@ -120,7 +120,8 @@ class Person:
                     max_sat = a
                     max_sat_x = x
                     max_sat_y = y
-        if max_sat_x is None or max_sat_y:
+        if max_sat_x is None or max_sat_y is None:
             self.target = None
         else:
             self.target = (x, y, b)
+            logging.debug("%s %s has chosen a target of (%s, %s)", self.name, self.surname, str(x), str(y))
