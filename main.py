@@ -18,6 +18,24 @@ people = [person.Person()]
 people[0].money = 100
 people[0].money_coefficient = lambda x: x*2
 
+o = places.Empty
+n = places.WallNorth
+e = places.WallEast
+s = places.WallSouth
+w = places.WallWest
+q = places.WallNorthWest
+z = places.WallSouthWest
+p = places.WallNorthEast
+m = places.WallSouthEast
+a = places.TradePoint
+
+map = [
+[q, n, n, p],
+[w, a, o, e],
+[w, o, a, e],
+[z, s, s, m]]
+
+place_map.map = map
 
 def parse_positions():
     for i, y in zip(place_map.map, range(len(place_map))):
