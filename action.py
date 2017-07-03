@@ -11,7 +11,7 @@ class Action:
         assert(isinstance(person_obj, person.Person))
         found_self = False
         for i in place_map.map[person_obj.x][person_obj.y].actions:
-            if isinstance(i, self):
+            if isinstance(i, self.__class__):
                 found_self = True
         assert(found_self)
         for i in self.prerequisites:
