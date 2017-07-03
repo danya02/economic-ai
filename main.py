@@ -16,7 +16,7 @@ global epoch
 epoch = 0
 people = [person.Person()]
 people[0].money = 100
-people[0].money_coefficient = lambda x: x*2
+people[0].satiation_coefficient = lambda x: x*4
 
 o = places.Empty
 n = places.WallNorth
@@ -52,7 +52,7 @@ def do_one_epoch():
     for i in people:
         i.act()
         i.compute_satisfaction()
-    print("epoch:", epoch, " money:", people[0].money, " satiation:", people[0].satiation, " satisfaction:", people[0].satisfaction)
+    print("epoch:", epoch, " money:", people[0].money, " satiation:", people[0].satiation, " satisfaction:", people[0].satisfaction, "coords:", people[0].x, people[0].y)
     input()
 
 try:

@@ -3,12 +3,12 @@ import action
 
 class MoveNorth(action.Action):
     def __init__(self):
-        self.delta = {"x": 0, "y": 1, "exhaustion":1}
+        self.delta = {"x": 0, "y": -1, "exhaustion":1}
         self.prerequisites = {}
 
 class MoveSouth(action.Action):
     def __init__(self):
-        self.delta = {"x": 0, "y": -1, "exhaustion":1}
+        self.delta = {"x": 0, "y": 1, "exhaustion":1}
         self.prerequisites = {}
 
 class MoveEast(action.Action):
@@ -28,5 +28,5 @@ class TradeMoneyForSatiation(action.Action):
 
 class Pass(action.Action):
     def __init__(self):
-        self.delta = {}
+        self.delta = {"exhaustion": -1}
         self.prerequisites = {}

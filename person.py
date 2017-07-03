@@ -64,14 +64,14 @@ class Person:
     def act(self):
         self.select_target()
         if self.target is not None:
-            if self.target[0] < self.x:
+            if self.target[1] < self.y:
                 actions.MoveNorth()(self)
-            elif self.target[0] > self.x:
-                actions.MoveSouth()(self)
-            elif self.target[1] < self.y:
-                actions.MoveWest()(self)
             elif self.target[1] > self.y:
+                actions.MoveSouth()(self)
+            elif self.target[0] > self.x:
                 actions.MoveEast()(self)
+            elif self.target[0] < self.x:
+                actions.MoveWest()(self)
             else:
                 self.target[2](self)
 
