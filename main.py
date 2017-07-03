@@ -38,9 +38,9 @@ map = [
 place_map.map = map
 
 def parse_positions():
-    for i, y in zip(place_map.map, range(len(place_map))):
+    for i, y in zip(place_map.map, range(len(place_map.map))):
         for j, x in zip(i, range(len(i))):
-            place_map.map[x][y] = place_map[x][y]()
+            place_map.map[x][y] = place_map.map[x][y]()
             place_map.map[x][y].x = x
             place_map.map[x][y].y = y
 
